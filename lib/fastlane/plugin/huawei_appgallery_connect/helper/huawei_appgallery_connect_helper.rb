@@ -75,7 +75,7 @@ module Fastlane
 
       end
 
-      def self.update_appinfo(client_id, token, app_id, privacy_policy_url)
+      def self.update_appinfo(client_id, token, app_id, privacy_policy_url,publishCountry)
         UI.important("Updating app info")
 
         uri = URI.parse("https://connect-api.cloud.huawei.com/api/publish/v2/app-info?appId=#{app_id}")
@@ -87,7 +87,7 @@ module Fastlane
         request["Authorization"] = "Bearer #{token}"
         request["Content-Type"] = "application/json"
 
-        request.body = {privacyPolicy: privacy_policy_url}.to_json
+        request.body = {privacyPolicy: privacy_policy_url, publishCountry: publishCountry}.to_json
 
         response = http.request(request)
         if !response.kind_of? Net::HTTPSuccess

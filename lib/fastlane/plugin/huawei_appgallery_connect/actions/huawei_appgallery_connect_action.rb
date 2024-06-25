@@ -12,7 +12,11 @@ module Fastlane
         else
 
           if params[:privacy_policy_url] != nil
-            Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url])
+            if params[:publishCountry] != nil
+              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], params[:publishCountry])
+            else
+              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url])
+            end
           end
 
           upload_app = Helper::HuaweiAppgalleryConnectHelper.upload_app(token, params[:client_id], params[:app_id], params[:apk_path], params[:is_aab])
@@ -166,6 +170,12 @@ module Fastlane
            FastlaneCore::ConfigItem.new(key: :package_ids,
                                                   env_name: "HUAWEI_APPGALLERY_PACKAGE_IDS",
                                                   description: "App Package IDs separated by commas",
+                                                  optional: true,
+                                                  type: String),
+
+            FastlaneCore:ConfigItem.new(key: :publishCountry,
+                                                  env_name: "HUAWEI_APPGALLERY_PUBLISH_COUNTRY",
+                                                  description: "Country code for the country where the app is published",
                                                   optional: true,
                                                   type: String)
         ]
