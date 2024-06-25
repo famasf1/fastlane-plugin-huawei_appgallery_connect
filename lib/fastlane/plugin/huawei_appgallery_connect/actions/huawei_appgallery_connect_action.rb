@@ -15,7 +15,7 @@ module Fastlane
             if params[:publishCountry] != nil
               Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], params[:publishCountry])
             else
-              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url])
+              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], 'en-US, OTHER')
             end
           end
 
