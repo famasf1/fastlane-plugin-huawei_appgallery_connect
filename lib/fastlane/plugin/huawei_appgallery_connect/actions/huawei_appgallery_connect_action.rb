@@ -173,7 +173,7 @@ module Fastlane
                                                   optional: true,
                                                   type: String),
 
-            FastlaneCore:ConfigItem.new(key: :publishCountry,
+            FastlaneCore::ConfigItem.new(key: :publishCountry,
                                                   env_name: "HUAWEI_APPGALLERY_PUBLISH_COUNTRY",
                                                   description: "Country code for the country where the app is published",
                                                   optional: true,
