@@ -12,10 +12,10 @@ module Fastlane
         else
 
           if params[:privacy_policy_url] != nil
-            if params[:publishCountry] != nil
-              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], params[:publishCountry])
+            if params[:publist_country] != nil
+              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], params[:publist_country])
             else
-              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], 'en-US, OTHER')
+              Helper::HuaweiAppgalleryConnectHelper.update_appinfo(params[:client_id], token, params[:app_id], params[:privacy_policy_url], 'US, OTHER')
             end
           end
 
@@ -173,7 +173,7 @@ module Fastlane
                                                   optional: true,
                                                   type: String),
 
-            FastlaneCore::ConfigItem.new(key: :publishCountry,
+            FastlaneCore::ConfigItem.new(key: :publist_country,
                                                   env_name: "HUAWEI_APPGALLERY_PUBLISH_COUNTRY",
                                                   description: "Country code for the country where the app is published",
                                                   optional: true,
